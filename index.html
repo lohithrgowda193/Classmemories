@@ -1,1 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Class Memories</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f0f14;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 20px;
+            background: linear-gradient(135deg, #21164a, #101020);
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin: 0 0 10px;
+        }
+
+        header p {
+            color: #bdbdc8;
+            font-size: 16px;
+        }
+
+        .container {
+            width: min(800px, 92%);
+            margin: 30px auto;
+        }
+
+        .counter {
+            text-align: center;
+            background: #191920;
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .counter-number {
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        .form-card {
+            background: #191920;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .form-card h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .form-card h3 {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            margin-top: 8px;
+            padding: 14px;
+            border: 1px solid #363640;
+            border-radius: 10px;
+            background: #101014;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #7c5cff;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .movie-box,
+        .song-box,
+        .series-box {
+            margin-top: 10px;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 13px 18px;
+            margin-top: 12px;
+            background: #6c4cff;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .submit {
+            width: 100%;
+            margin-top: 30px;
+            padding: 17px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .hint {
+            color: #999;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 31px;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Class Memories</h1>
+
+    <p>
+        Our movies. Our music. Our memories.
+        <br>
+        Something we'll remember forever ❤️
+    </p>
+
+</header>
+
+
+<div class="container">
+
+    <div class="counter">
+
+        <div class="counter-number">
+            0 / 60
+        </div>
+
+        <div>
+            Classmates Joined
+        </div>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <h2>📝 Create Your Memory</h2>
+
+        <form>
+
+            <label>
+                Name *
+                <input
+                    type="text"
+                    placeholder="Enter your full name"
+                    required>
+            </label>
+
+
+            <label>
+                Roll Number *
+                <input
+                    type="text"
+                    placeholder="Enter your roll number"
+                    required>
+            </label>
+
+
+            <label>
+                ⭐ Favorite Actor *
+                <input
+                    type="text"
+                    placeholder="Your favorite actor"
+                    required>
+            </label>
+
+
+            <label>
+                ⭐ Favorite Actress *
+                <input
+                    type="text"
+                    placeholder="Your favorite actress"
+                    required>
+            </label>
+
+
+            <h3>🎬 Your Favorite Movies</h3>
+
+            <p class="hint">
+                Minimum 5 movies • Maximum 20 movies
+            </p>
+
+            <div class="movie-box">
+
+                <input type="text" placeholder="Movie 1" required>
+
+                <input type="text" placeholder="Movie 2" required>
+
+                <input type="text" placeholder="Movie 3" required>
+
+                <input type="text" placeholder="Movie 4" required>
+
+                <input type="text" placeholder="Movie 5" required>
+
+            </div>
+
+
+            <h3>🍿 5 Movies Your Friend Must Watch</h3>
+
+            <input type="text" placeholder="Movie suggestion 1" required>
+
+            <input type="text" placeholder="Movie suggestion 2" required>
+
+            <input type="text" placeholder="Movie suggestion 3" required>
+
+            <input type="text" placeholder="Movie suggestion 4" required>
+
+            <input type="text" placeholder="Movie suggestion 5" required>
+
+
+            <h3>📺 Top 3 Web Series</h3>
+
+            <p class="hint">
+                Optional
+            </p>
+
+            <input type="text" placeholder="Web series 1">
+
+            <input type="text" placeholder="Web series 2">
+
+            <input type="text" placeholder="Web series 3">
+
+
+            <h3>🎵 Top 5 All-Time Favorite Songs</h3>
+
+            <input type="text" placeholder="Song 1" required>
+
+            <input type="text" placeholder="Song 2" required>
+
+            <input type="text" placeholder="Song 3" required>
+
+            <input type="text" placeholder="Song 4" required>
+
+            <input type="text" placeholder="Song 5" required>
+
+
+            <h3>💌 Anything You Want To Tell Your Classmates</h3>
+
+            <textarea
+                placeholder="Write something for your classmates..."></textarea>
+
+
+            <button
+                type="submit"
+                class="submit">
+
+                🚀 Save My Memory
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    Made with ❤️ by our class
+
+</footer>
+
+</body>
+</html>
