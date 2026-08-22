@@ -3,930 +3,1653 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="CINEVAULT - ಸಿನಿಮಾ ಸಮ್ಮಿಲನ">
+<title>CineVault — ಸಿನಿಮಾ ಸಮ್ಮಿಲನ</title>
 
-    <title>CINEVAULT — ಸಿನಿಮಾ ಸಮ್ಮಿಲನ</title>
+<meta name="description"
+content="CineVault — ಸಿನಿಮಾ ಸಮ್ಮಿಲನ. Let's discover and discuss art together.">
 
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* =========================================================
+   CINEVAULT — CINEMATIC INTERFACE
+========================================================= */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
+html{
+    scroll-behavior:smooth;
+}
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+body{
 
-            background:
-                #09090d;
+    background:#08090c;
 
-            color:
-                #ffffff;
+    color:#f5f5f5;
 
-            min-height:
-                100vh;
-        }
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
+    overflow-x:hidden;
+}
 
-        /* =========================
-           NAVIGATION
-        ========================= */
 
-        .navbar {
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
-            height:
-                70px;
+body::before{
 
-            display:
-                flex;
+    content:"";
 
-            align-items:
-                center;
+    position:fixed;
 
-            justify-content:
-                space-between;
+    inset:0;
 
-            padding:
-                0 5%;
+    pointer-events:none;
 
-            background:
-                rgba(9, 9, 13, 0.95);
+    background:
 
-            border-bottom:
-                1px solid #24242c;
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(92,64,140,.18),
+            transparent 32%
+        ),
 
-            position:
-                sticky;
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(30,75,105,.12),
+            transparent 30%
+        );
 
-            top:
-                0;
+    z-index:-2;
+}
 
-            z-index:
-                100;
-        }
 
+/* =========================================================
+   NAVBAR
+========================================================= */
 
-        .logo {
+.navbar{
 
-            font-size:
-                22px;
+    position:fixed;
 
-            font-weight:
-                800;
+    top:0;
+    left:0;
+    right:0;
 
-            letter-spacing:
-                2px;
-        }
+    height:76px;
 
+    display:flex;
 
-        .logo span {
+    align-items:center;
 
-            display:
-                block;
+    justify-content:space-between;
 
-            font-size:
-                9px;
+    padding:0 5%;
 
-            letter-spacing:
-                2px;
+    z-index:1000;
 
-            color:
-                #a5a5b0;
+    background:
+        linear-gradient(
+            rgba(8,9,12,.92),
+            rgba(8,9,12,.55)
+        );
 
-            margin-top:
-                4px;
-        }
+    backdrop-filter:blur(18px);
 
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+}
 
-        .nav-links {
 
-            display:
-                flex;
+.brand{
 
-            gap:
-                25px;
+    display:flex;
 
-            list-style:
-                none;
-        }
+    align-items:center;
 
+    gap:12px;
+}
 
-        .nav-links a {
 
-            color:
-                #bdbdc8;
+.brand-mark{
 
-            text-decoration:
-                none;
+    width:38px;
+    height:38px;
 
-            font-size:
-                14px;
+    border:1px solid rgba(255,255,255,.2);
 
-            transition:
-                0.2s;
-        }
+    border-radius:10px;
 
+    display:flex;
 
-        .nav-links a:hover {
+    align-items:center;
 
-            color:
-                white;
-        }
+    justify-content:center;
 
+    font-size:19px;
 
-        .profile-btn {
+    background:
+        rgba(255,255,255,.04);
 
-            width:
-                38px;
+}
 
-            height:
-                38px;
 
-            border-radius:
-                50%;
+.brand-name{
 
-            background:
-                #24242c;
+    font-size:20px;
 
-            display:
-                flex;
+    font-weight:700;
 
-            align-items:
-                center;
+    letter-spacing:.3px;
+}
 
-            justify-content:
-                center;
 
-            cursor:
-                pointer;
-        }
+.brand-sub{
 
+    font-size:9px;
 
+    color:#85858e;
 
-        /* =========================
-           HERO
-        ========================= */
+    letter-spacing:2px;
 
-        .hero {
+    margin-top:2px;
+}
 
-            min-height:
-                520px;
 
-            display:
-                flex;
+.nav-links{
 
-            align-items:
-                center;
+    display:flex;
 
-            justify-content:
-                center;
+    gap:28px;
 
-            text-align:
-                center;
+    list-style:none;
+}
 
-            padding:
-                60px 20px;
 
-            background:
+.nav-links a{
 
-                radial-gradient(
-                    circle at center,
-                    #29213e 0%,
-                    #111118 42%,
-                    #09090d 75%
-                );
-        }
+    color:#9999a3;
 
+    text-decoration:none;
 
-        .hero-content {
+    font-size:13px;
 
-            max-width:
-                800px;
-        }
+    transition:.25s;
+}
 
 
-        .hero h1 {
+.nav-links a:hover{
 
-            font-size:
-                clamp(55px, 10vw, 105px);
+    color:#fff;
+}
 
-            letter-spacing:
-                8px;
 
-            font-weight:
-                900;
-        }
+.profile{
 
+    width:38px;
 
-        .kannada {
+    height:38px;
 
-            font-size:
-                26px;
+    border-radius:50%;
 
-            margin-top:
-                14px;
+    background:
+        linear-gradient(
+            135deg,
+            #292934,
+            #111116
+        );
 
-            color:
-                #d6d6df;
+    border:
+        1px solid rgba(255,255,255,.12);
 
-            font-weight:
-                500;
-        }
+    display:flex;
 
+    align-items:center;
 
-        .tagline {
+    justify-content:center;
 
-            margin-top:
-                12px;
+    cursor:pointer;
+}
 
-            font-size:
-                13px;
 
-            letter-spacing:
-                4px;
+/* =========================================================
+   HERO
+========================================================= */
 
-            color:
-                #9999a6;
-        }
+.hero{
 
+    min-height:100vh;
 
-        .hero-description {
+    position:relative;
 
-            max-width:
-                570px;
+    display:flex;
 
-            margin:
-                25px auto;
+    align-items:center;
 
-            color:
-                #aaaab5;
+    padding:
+        130px 7% 80px;
 
-            line-height:
-                1.7;
+    overflow:hidden;
+}
 
-            font-size:
-                15px;
-        }
 
+/* cinematic light */
 
-        .hero-buttons {
+.hero::before{
 
-            display:
-                flex;
+    content:"";
 
-            justify-content:
-                center;
+    position:absolute;
 
-            gap:
-                12px;
+    width:700px;
 
-            margin-top:
-                30px;
+    height:700px;
 
-            flex-wrap:
-                wrap;
-        }
+    border-radius:50%;
 
+    background:
+        radial-gradient(
+            circle,
+            rgba(120,82,170,.20),
+            transparent 68%
+        );
 
-        .button {
+    left:-250px;
 
-            padding:
-                13px 23px;
+    top:80px;
+}
 
-            border-radius:
-                9px;
 
-            border:
-                1px solid #34343e;
+/* poster silhouettes */
 
-            background:
-                #1a1a22;
+.poster{
 
-            color:
-                white;
+    position:absolute;
 
-            text-decoration:
-                none;
+    width:150px;
 
-            font-size:
-                14px;
+    height:225px;
 
-            cursor:
-                pointer;
+    border-radius:8px;
 
-            transition:
-                0.2s;
-        }
+    overflow:hidden;
 
+    opacity:.32;
 
-        .button:hover {
+    filter:
+        brightness(.65)
+        saturate(.7);
 
-            background:
-                #282833;
-        }
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6);
 
+    border:
+        1px solid rgba(255,255,255,.1);
+}
 
-        .button.primary {
 
-            background:
-                #ffffff;
+.poster::after{
 
-            color:
-                #09090d;
+    content:"";
 
-            border:
-                none;
+    position:absolute;
 
-            font-weight:
-                700;
-        }
+    inset:0;
 
+    background:
+        linear-gradient(
+            transparent 30%,
+            rgba(0,0,0,.85)
+        );
+}
 
 
-        /* =========================
-           MAIN
-        ========================= */
+.poster.one{
 
-        main {
+    right:14%;
 
-            width:
-                min(1200px, 90%);
+    top:18%;
 
-            margin:
-                0 auto;
+    transform:
+        rotate(8deg);
 
-            padding:
-                55px 0;
-        }
+    background:
+        linear-gradient(
+            145deg,
+            #332d47,
+            #101017
+        );
+}
 
 
-        .section-title {
+.poster.two{
 
-            font-size:
-                22px;
+    right:4%;
 
-            margin-bottom:
-                20px;
-        }
+    top:42%;
 
+    transform:
+        rotate(-8deg);
 
+    background:
+        linear-gradient(
+            145deg,
+            #303d47,
+            #101216
+        );
+}
 
-        /* =========================
-           SEARCH
-        ========================= */
 
-        .search-box {
+.poster.three{
 
-            display:
-                flex;
+    right:25%;
 
-            align-items:
-                center;
+    bottom:3%;
 
-            background:
-                #15151c;
+    transform:
+        rotate(5deg);
 
-            border:
-                1px solid #2b2b35;
+    background:
+        linear-gradient(
+            145deg,
+            #46362e,
+            #121011
+        );
+}
 
-            border-radius:
-                12px;
 
-            padding:
-                5px 15px;
+.hero-content{
 
-            margin-bottom:
-                55px;
-        }
+    max-width:760px;
 
+    position:relative;
 
-        .search-icon {
+    z-index:2;
+}
 
-            font-size:
-                20px;
 
-            margin-right:
-                10px;
-        }
+.eyebrow{
 
+    display:inline-flex;
 
-        .search-box input {
+    align-items:center;
 
-            flex:
-                1;
+    gap:8px;
 
-            background:
-                transparent;
+    color:#9b9ba6;
 
-            border:
-                none;
+    font-size:11px;
 
-            outline:
-                none;
+    letter-spacing:3px;
 
-            color:
-                white;
+    text-transform:uppercase;
 
-            padding:
-                13px 5px;
+    margin-bottom:22px;
+}
 
-            font-size:
-                15px;
-        }
 
+.eyebrow::before{
 
+    content:"";
 
-        /* =========================
-           ACTIVITY
-        ========================= */
+    width:28px;
 
-        .activity {
+    height:1px;
 
-            display:
-                grid;
+    background:#77777f;
+}
 
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(280px, 1fr)
-                );
 
-            gap:
-                15px;
-        }
+.hero-title{
 
+    font-size:
+        clamp(58px,9vw,120px);
 
-        .activity-card {
+    line-height:.9;
 
-            background:
-                #15151c;
+    font-weight:800;
 
-            border:
-                1px solid #272731;
+    letter-spacing:-5px;
 
-            border-radius:
-                14px;
+    margin-bottom:18px;
+}
 
-            padding:
-                20px;
 
-            transition:
-                0.2s;
-        }
+.hero-kannada{
 
+    font-size:27px;
 
-        .activity-card:hover {
+    color:#d7d7dd;
 
-            transform:
-                translateY(-3px);
+    margin-bottom:9px;
+}
 
-            border-color:
-                #444450;
-        }
 
+.hero-tagline{
 
-        .activity-user {
+    font-size:11px;
 
-            font-size:
-                13px;
+    color:#777780;
 
-            color:
-                #9999a6;
+    letter-spacing:4px;
+}
 
-            margin-bottom:
-                14px;
-        }
 
+.hero-text{
 
-        .activity-movie {
+    max-width:560px;
 
-            display:
-                flex;
+    color:#92929c;
 
-            gap:
-                15px;
+    line-height:1.8;
 
-            align-items:
-                center;
-        }
+    margin-top:30px;
 
+    font-size:14px;
+}
 
-        .poster-placeholder {
 
-            width:
-                65px;
+.hero-actions{
 
-            height:
-                95px;
+    display:flex;
 
-            border-radius:
-                7px;
+    gap:12px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #363642,
-                    #17171e
-                );
+    margin-top:34px;
 
-            display:
-                flex;
+    flex-wrap:wrap;
+}
 
-            align-items:
-                center;
 
-            justify-content:
-                center;
+.btn{
 
-            font-size:
-                25px;
+    padding:14px 22px;
 
-            flex-shrink:
-                0;
-        }
+    border-radius:9px;
 
+    text-decoration:none;
 
-        .movie-name {
+    font-size:13px;
 
-            font-weight:
-                700;
+    transition:.25s;
 
-            margin-bottom:
-                7px;
-        }
+    border:1px solid rgba(255,255,255,.12);
 
+    color:#fff;
 
-        .movie-year {
+    background:
+        rgba(255,255,255,.04);
 
-            color:
-                #858591;
+}
 
-            font-size:
-                13px;
-        }
 
+.btn:hover{
 
-        .rating {
+    transform:translateY(-2px);
 
-            margin-top:
-                8px;
+    background:
+        rgba(255,255,255,.09);
+}
 
-            color:
-                #e5e5ea;
 
-            font-size:
-                14px;
-        }
+.btn-primary{
 
+    background:#f4f4f4;
 
+    color:#0a0a0d;
 
-        /* =========================
-           FEATURES
-        ========================= */
+    font-weight:600;
 
-        .features {
+    border:none;
+}
 
-            display:
-                grid;
 
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(180px, 1fr)
-                );
+.btn-primary:hover{
 
-            gap:
-                15px;
+    background:#fff;
 
-            margin-top:
-                55px;
-        }
+}
 
 
-        .feature {
+/* =========================================================
+   CINEMA TICKER
+========================================================= */
 
-            padding:
-                24px;
+.ticker{
 
-            background:
-                #15151c;
+    border-top:
+        1px solid rgba(255,255,255,.06);
 
-            border:
-                1px solid #272731;
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
 
-            border-radius:
-                14px;
+    overflow:hidden;
 
-            transition:
-                0.2s;
-        }
+    white-space:nowrap;
 
+    padding:16px 0;
 
-        .feature:hover {
+    color:#666670;
 
-            transform:
-                translateY(-3px);
+    font-size:10px;
 
-            border-color:
-                #444450;
-        }
+    letter-spacing:3px;
+}
 
 
-        .feature-icon {
+.ticker-inner{
 
-            font-size:
-                25px;
+    display:inline-block;
 
-            margin-bottom:
-                12px;
-        }
+    animation:
+        ticker 25s linear infinite;
+}
 
 
-        .feature h3 {
+@keyframes ticker{
 
-            font-size:
-                16px;
+    from{
+        transform:translateX(0);
+    }
 
-            margin-bottom:
-                7px;
-        }
+    to{
+        transform:translateX(-50%);
+    }
+}
 
 
-        .feature p {
+/* =========================================================
+   MAIN
+========================================================= */
 
-            color:
-                #858591;
+.container{
 
-            font-size:
-                13px;
+    width:min(1180px,90%);
 
-            line-height:
-                1.5;
-        }
+    margin:auto;
 
+    padding:80px 0;
+}
 
 
-        /* =========================
-           FOOTER
-        ========================= */
+.section-head{
 
-        footer {
+    display:flex;
 
-            text-align:
-                center;
+    align-items:end;
 
-            padding:
-                50px 20px;
+    justify-content:space-between;
 
-            border-top:
-                1px solid #202028;
+    margin-bottom:25px;
+}
 
-            color:
-                #70707b;
 
-            font-size:
-                12px;
+.section-label{
 
-            letter-spacing:
-                1px;
+    color:#666671;
 
-        }
+    font-size:10px;
 
+    letter-spacing:3px;
 
+    text-transform:uppercase;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    margin-bottom:7px;
+}
 
-        @media (max-width: 700px) {
 
-            .navbar {
+.section-title{
 
-                padding:
-                    0 20px;
-            }
+    font-size:27px;
 
+    font-weight:650;
 
-            .nav-links {
+    letter-spacing:-.7px;
+}
 
-                display:
-                    none;
-            }
 
+.view-all{
 
-            .hero {
+    color:#777781;
 
-                min-height:
-                    470px;
-            }
+    font-size:12px;
 
+    text-decoration:none;
+}
 
-            .hero h1 {
 
-                font-size:
-                    52px;
+/* =========================================================
+   SEARCH
+========================================================= */
 
-                letter-spacing:
-                    4px;
-            }
+.search-section{
 
+    margin-bottom:85px;
+}
 
-            .kannada {
 
-                font-size:
-                    22px;
-            }
+.search{
 
+    position:relative;
 
-            .tagline {
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.025)
+        );
 
-                font-size:
-                    9px;
+    border:
+        1px solid rgba(255,255,255,.1);
 
-                letter-spacing:
-                    2px;
-            }
+    border-radius:16px;
 
+    padding:5px;
 
-            .hero-description {
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.25);
+}
 
-                font-size:
-                    14px;
-            }
 
-        }
+.search input{
 
-    </style>
+    width:100%;
+
+    padding:20px 22px 20px 55px;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:14px;
+}
+
+
+.search input::placeholder{
+
+    color:#666670;
+}
+
+
+.search-icon{
+
+    position:absolute;
+
+    left:21px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#777781;
+
+    font-size:19px;
+}
+
+
+/* =========================================================
+   MOVIE CARDS
+========================================================= */
+
+.movie-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:18px;
+}
+
+
+.movie-card{
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+
+.movie-card:hover{
+
+    transform:translateY(-6px);
+}
+
+
+.movie-poster{
+
+    aspect-ratio:
+        2/3;
+
+    border-radius:9px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #282832,
+            #111117
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35);
+}
+
+
+.movie-poster::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 35%,
+            rgba(0,0,0,.8)
+        );
+}
+
+
+.poster-number{
+
+    position:absolute;
+
+    left:13px;
+
+    bottom:13px;
+
+    font-size:11px;
+
+    color:#aaaab2;
+
+    letter-spacing:1px;
+}
+
+
+.movie-info{
+
+    padding-top:12px;
+}
+
+
+.movie-title{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.movie-meta{
+
+    color:#666670;
+
+    font-size:11px;
+
+    margin-top:5px;
+}
+
+
+.movie-rating{
+
+    margin-top:6px;
+
+    font-size:11px;
+
+    color:#bcbcc5;
+}
+
+
+/* =========================================================
+   ACTIVITY
+========================================================= */
+
+.activity-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+
+.activity-card{
+
+    padding:20px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:.25s;
+}
+
+
+.activity-card:hover{
+
+    background:
+        rgba(255,255,255,.045);
+
+    transform:translateY(-3px);
+}
+
+
+.activity-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#70707a;
+
+    font-size:10px;
+
+    margin-bottom:17px;
+}
+
+
+.activity-user{
+
+    color:#b9b9c1;
+
+    font-weight:600;
+}
+
+
+.activity-body{
+
+    display:flex;
+
+    gap:14px;
+}
+
+
+.small-poster{
+
+    width:58px;
+
+    height:82px;
+
+    flex-shrink:0;
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #363641,
+            #15151b
+        );
+}
+
+
+.activity-title{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:6px;
+}
+
+
+.activity-date{
+
+    font-size:10px;
+
+    color:#65656e;
+}
+
+
+.activity-rating{
+
+    margin-top:9px;
+
+    font-size:12px;
+
+    color:#c9c9d0;
+}
+
+
+.activity-review{
+
+    color:#85858f;
+
+    font-size:11px;
+
+    line-height:1.6;
+
+    margin-top:9px;
+}
+
+
+/* =========================================================
+   DISCOVER STRIP
+========================================================= */
+
+.discover{
+
+    margin-top:85px;
+
+    padding:45px;
+
+    border-radius:18px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+
+        linear-gradient(
+            120deg,
+            rgba(47,38,66,.5),
+            rgba(18,20,28,.8)
+        );
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.discover::after{
+
+    content:"🎞";
+
+    position:absolute;
+
+    right:30px;
+
+    bottom:-35px;
+
+    font-size:180px;
+
+    opacity:.035;
+}
+
+
+.discover h2{
+
+    font-size:32px;
+
+    max-width:550px;
+
+    letter-spacing:-1px;
+}
+
+
+.discover p{
+
+    color:#85858f;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    max-width:520px;
+
+    margin-top:13px;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+    margin-top:70px;
+}
+
+
+.feature{
+
+    padding:25px 22px;
+
+    border-top:
+        1px solid rgba(255,255,255,.12);
+}
+
+
+.feature-icon{
+
+    font-size:21px;
+
+    margin-bottom:18px;
+}
+
+
+.feature h3{
+
+    font-size:14px;
+
+    margin-bottom:7px;
+}
+
+
+.feature p{
+
+    color:#686872;
+
+    font-size:11px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:70px 20px;
+
+    text-align:center;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+
+    color:#5f5f68;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+}
+
+
+.footer-name{
+
+    color:#aaaab2;
+
+    font-size:17px;
+
+    margin-bottom:8px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+
+        display:none;
+    }
+
+
+    .movie-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+
+    .features{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .activity-grid{
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .poster{
+
+        opacity:.18;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .hero{
+
+        padding:
+            120px 6% 70px;
+    }
+
+
+    .hero-title{
+
+        font-size:60px;
+
+        letter-spacing:-3px;
+    }
+
+
+    .hero-kannada{
+
+        font-size:22px;
+    }
+
+
+    .hero-tagline{
+
+        font-size:8px;
+
+        letter-spacing:2px;
+    }
+
+
+    .movie-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:14px;
+    }
+
+
+    .features{
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .discover{
+
+        padding:30px;
+    }
+
+
+    .discover h2{
+
+        font-size:25px;
+    }
+
+
+    .container{
+
+        padding:60px 0;
+    }
+
+}
+
+</style>
 
 </head>
-
 
 
 <body>
 
 
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
-
-    <nav class="navbar">
+<nav class="navbar">
 
 
-        <div class="logo">
+    <div class="brand">
 
-            CINEVAULT
+        <div class="brand-mark">
+            🎞
+        </div>
 
-            <span>
+
+        <div>
+
+            <div class="brand-name">
+                CineVault
+            </div>
+
+            <div class="brand-sub">
                 ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
-            </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#explore">
+                Explore
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                Diary
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                Ratings
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                Recommendations
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                CineMates
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="profile">
+        ◉
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+
+    <div class="poster one"></div>
+
+    <div class="poster two"></div>
+
+    <div class="poster three"></div>
+
+
+    <div class="hero-content">
+
+
+        <div class="eyebrow">
+
+            YOUR CLASS CINEMA ARCHIVE
 
         </div>
 
 
+        <h1 class="hero-title">
 
-        <ul class="nav-links">
+            CineVault
 
-
-            <li>
-                <a href="#">
-                    Home
-                </a>
-            </li>
+        </h1>
 
 
-            <li>
-                <a href="#">
-                    Explore
-                </a>
-            </li>
+        <div class="hero-kannada">
 
-
-            <li>
-                <a href="#">
-                    Diary
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#">
-                    Ratings
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#">
-                    Recommendations
-                </a>
-            </li>
-
-
-            <li>
-                <a href="#">
-                    CineMates
-                </a>
-            </li>
-
-
-        </ul>
-
-
-
-        <div class="profile-btn">
-
-            👤
+            ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
 
         </div>
 
 
-    </nav>
+        <div class="hero-tagline">
+
+            LET'S DISCOVER & DISCUSS ART TOGETHER
+
+        </div>
+
+
+        <p class="hero-text">
+
+            A shared space where our CineMates
+            discover films, record what they watch,
+            rate their experiences, recommend hidden
+            gems and discuss cinema together.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+            <a
+                href="#explore"
+                class="btn btn-primary">
+
+                Explore Cinema →
+
+            </a>
+
+
+            <a
+                href="#activity"
+                class="btn">
+
+                See What's Watching
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
 
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+<!-- =========================================================
+     TICKER
+========================================================= -->
 
-    <section class="hero">
+<div class="ticker">
+
+    <div class="ticker-inner">
+
+        KANNADA CINEMA　•　
+        TAMIL CINEMA　•　
+        TELUGU CINEMA　•　
+        HINDI CINEMA　•　
+        WORLD CINEMA　•　
+        CLASSICS　•　
+        NEW RELEASES　•　
+        SERIES　•　
+        DOCUMENTARIES　•　
+        KANNADA CINEMA　•　
+        TAMIL CINEMA　•　
+        TELUGU CINEMA　•　
+        HINDI CINEMA　•　
+        WORLD CINEMA　•　
+
+    </div>
+
+</div>
 
 
-        <div class="hero-content">
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container"
+      id="explore">
 
 
-            <h1>
+    <!-- SEARCH -->
 
-                CINEVAULT
-
-            </h1>
+    <section class="search-section">
 
 
+        <div class="section-head">
 
-            <div class="kannada">
+            <div>
 
-                ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
+                <div class="section-label">
+                    DISCOVER
+                </div>
+
+                <h2 class="section-title">
+                    Find something to watch.
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="search">
+
+            <div class="search-icon">
+                ⌕
+            </div>
+
+
+            <input
+                type="text"
+                placeholder="Search movies, series, directors, actors..."
+            >
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- RECENT MOVIES -->
+
+    <section>
+
+
+        <div class="section-head">
+
+            <div>
+
+                <div class="section-label">
+                    TRENDING IN OUR VAULT
+                </div>
+
+                <h2 class="section-title">
+                    What CineMates are watching
+                </h2>
+
+            </div>
+
+
+            <a href="#"
+               class="view-all">
+
+                View all →
+
+            </a>
+
+        </div>
+
+
+        <div class="movie-grid">
+
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+
+                    <div class="poster-number">
+                        01
+                    </div>
+
+                </div>
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Interstellar
+                    </div>
+
+                    <div class="movie-meta">
+                        2014 · Sci-Fi
+                    </div>
+
+                    <div class="movie-rating">
+                        ⭐ 4.8 · 17 watches
+                    </div>
+
+                </div>
 
             </div>
 
 
 
-            <div class="tagline">
+            <div class="movie-card">
 
-                LET'S DISCOVER & DISCUSS ART TOGETHER
+                <div class="movie-poster">
+
+                    <div class="poster-number">
+                        02
+                    </div>
+
+                </div>
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        KGF: Chapter 2
+                    </div>
+
+                    <div class="movie-meta">
+                        2022 · Kannada
+                    </div>
+
+                    <div class="movie-rating">
+                        ⭐ 4.6 · 14 watches
+                    </div>
+
+                </div>
 
             </div>
 
 
 
-            <p class="hero-description">
+            <div class="movie-card">
 
-                A private cinema space for our class.
+                <div class="movie-poster">
 
-                Discover films, share what you've watched,
-                rate what you love, and discuss cinema
-                together.
+                    <div class="poster-number">
+                        03
+                    </div>
 
-            </p>
+                </div>
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Parasite
+                    </div>
+
+                    <div class="movie-meta">
+                        2019 · Korean
+                    </div>
+
+                    <div class="movie-rating">
+                        ⭐ 4.7 · 12 watches
+                    </div>
+
+                </div>
+
+            </div>
 
 
 
-            <div class="hero-buttons">
+            <div class="movie-card">
+
+                <div class="movie-poster">
+
+                    <div class="poster-number">
+                        04
+                    </div>
+
+                </div>
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        The Dark Knight
+                    </div>
+
+                    <div class="movie-meta">
+                        2008 · Action
+                    </div>
+
+                    <div class="movie-rating">
+                        ⭐ 4.9 · 21 watches
+                    </div>
+
+                </div>
+
+            </div>
 
 
-                <a
-                    href="#explore"
-                    class="button primary">
 
-                    🔎 Explore Cinema
+            <div class="movie-card">
 
-                </a>
+                <div class="movie-poster">
 
+                    <div class="poster-number">
+                        05
+                    </div>
 
+                </div>
 
-                <a
-                    href="#activity"
-                    class="button">
+                <div class="movie-info">
 
-                    🎬 View Activity
+                    <div class="movie-title">
+                        12th Fail
+                    </div>
 
-                </a>
+                    <div class="movie-meta">
+                        2023 · Hindi
+                    </div>
 
+                    <div class="movie-rating">
+                        ⭐ 4.8 · 11 watches
+                    </div>
+
+                </div>
 
             </div>
 
@@ -938,466 +1661,354 @@
 
 
 
-    <!-- =========================
-         MAIN
-    ========================= -->
+    <!-- ACTIVITY -->
 
-    <main id="explore">
-
+    <section id="activity"
+             style="margin-top:90px;">
 
 
-        <!-- SEARCH -->
+        <div class="section-head">
 
-        <h2 class="section-title">
+            <div>
 
-            🔎 Explore Movies & Series
+                <div class="section-label">
+                    LIVE DIARY
+                </div>
 
-        </h2>
+                <h2 class="section-title">
+                    Recently watched
+                </h2>
 
-
-
-        <div class="search-box">
-
-
-            <span class="search-icon">
-
-                🔍
-
-            </span>
+            </div>
 
 
+            <a href="#"
+               class="view-all">
 
-            <input
-                type="text"
-                placeholder="Search any movie or series — any language, any era...">
+                Full diary →
+
+            </a>
+
+        </div>
+
+
+        <div class="activity-grid">
+
+
+            <div class="activity-card">
+
+
+                <div class="activity-top">
+
+                    <span class="activity-user">
+                        Rahul
+                    </span>
+
+                    <span>
+                        Today
+                    </span>
+
+                </div>
+
+
+                <div class="activity-body">
+
+
+                    <div class="small-poster"></div>
+
+
+                    <div>
+
+                        <div class="activity-title">
+                            Interstellar
+                        </div>
+
+                        <div class="activity-date">
+                            Watched 22 Aug 2026
+                        </div>
+
+                        <div class="activity-rating">
+                            ⭐ 4.8 / 5.0
+                        </div>
+
+                        <div class="activity-review">
+
+                            "Some films entertain.
+                            Some stay with you."
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="activity-card">
+
+
+                <div class="activity-top">
+
+                    <span class="activity-user">
+                        Ananya
+                    </span>
+
+                    <span>
+                        Yesterday
+                    </span>
+
+                </div>
+
+
+                <div class="activity-body">
+
+
+                    <div class="small-poster"></div>
+
+
+                    <div>
+
+                        <div class="activity-title">
+                            KGF: Chapter 2
+                        </div>
+
+                        <div class="activity-date">
+                            Watched 21 Aug 2026
+                        </div>
+
+                        <div class="activity-rating">
+                            ⭐ 4.6 / 5.0
+                        </div>
+
+                        <div class="activity-review">
+
+                            "The big-screen experience
+                            was unforgettable."
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="activity-card">
+
+
+                <div class="activity-top">
+
+                    <span class="activity-user">
+                        Vivek
+                    </span>
+
+                    <span>
+                        2 days ago
+                    </span>
+
+                </div>
+
+
+                <div class="activity-body">
+
+
+                    <div class="small-poster"></div>
+
+
+                    <div>
+
+                        <div class="activity-title">
+                            Breaking Bad
+                        </div>
+
+                        <div class="activity-date">
+                            Series · Season 5
+                        </div>
+
+                        <div class="activity-rating">
+                            ⭐ 4.9 / 5.0
+                        </div>
+
+                        <div class="activity-review">
+
+                            "The final season was
+                            phenomenal."
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
         </div>
 
 
+    </section>
 
-        <!-- =========================
-             ACTIVITY
-        ========================= -->
 
-        <section id="activity">
 
+    <!-- DISCOVER -->
 
-            <h2 class="section-title">
+    <section class="discover">
 
-                🎬 What's Happening
 
-            </h2>
+        <div class="section-label">
+            CINEMA IS BETTER TOGETHER
+        </div>
 
 
+        <h2>
+            Every film has a story.
+            Every viewer has one too.
+        </h2>
 
-            <div class="activity">
 
+        <p>
 
+            Discover what your CineMates love,
+            disagree about the endings, find
+            something you've never heard of,
+            and build a cinema history together.
 
-                <!-- CARD 1 -->
+        </p>
 
-                <div class="activity-card">
 
+        <div class="hero-actions">
 
-                    <div class="activity-user">
+            <a href="#"
+               class="btn btn-primary">
 
-                        Rahul watched
+                Discover your next film →
 
-                    </div>
+            </a>
 
+        </div>
 
 
-                    <div class="activity-movie">
+    </section>
 
 
-                        <div class="poster-placeholder">
 
-                            🎬
+    <!-- FEATURES -->
 
-                        </div>
+    <section class="features">
 
 
+        <div class="feature">
 
-                        <div>
-
-
-                            <div class="movie-name">
-
-                                Interstellar
-
-                            </div>
-
-
-
-                            <div class="movie-year">
-
-                                2014
-
-                            </div>
-
-
-
-                            <div class="rating">
-
-                                ⭐ 4.8 / 5.0
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- CARD 2 -->
-
-                <div class="activity-card">
-
-
-                    <div class="activity-user">
-
-                        Ananya watched
-
-                    </div>
-
-
-
-                    <div class="activity-movie">
-
-
-                        <div class="poster-placeholder">
-
-                            🎬
-
-                        </div>
-
-
-
-                        <div>
-
-
-                            <div class="movie-name">
-
-                                KGF: Chapter 2
-
-                            </div>
-
-
-
-                            <div class="movie-year">
-
-                                2022
-
-                            </div>
-
-
-
-                            <div class="rating">
-
-                                ⭐ 4.6 / 5.0
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- CARD 3 -->
-
-                <div class="activity-card">
-
-
-                    <div class="activity-user">
-
-                        Vivek watched
-
-                    </div>
-
-
-
-                    <div class="activity-movie">
-
-
-                        <div class="poster-placeholder">
-
-                            📺
-
-                        </div>
-
-
-
-                        <div>
-
-
-                            <div class="movie-name">
-
-                                Breaking Bad
-
-                            </div>
-
-
-
-                            <div class="movie-year">
-
-                                Series
-
-                            </div>
-
-
-
-                            <div class="rating">
-
-                                ⭐ 4.9 / 5.0
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-
+            <div class="feature-icon">
+                📖
             </div>
 
+            <h3>
+                Personal Diary
+            </h3>
 
-        </section>
+            <p>
+                Every film you watch,
+                every rating and every
+                memory stays in your diary.
+            </p>
 
-
-
-        <!-- =========================
-             FEATURES
-        ========================= -->
-
-        <section class="features">
-
-
-
-            <div class="feature">
+        </div>
 
 
-                <div class="feature-icon">
+        <div class="feature">
 
-                    📖
-
-                </div>
-
-
-
-                <h3>
-
-                    Your Diary
-
-                </h3>
-
-
-
-                <p>
-
-                    Keep your complete watch history,
-                    ratings and reviews.
-
-                </p>
-
-
+            <div class="feature-icon">
+                ⭐
             </div>
 
+            <h3>
+                Your Rating
+            </h3>
+
+            <p>
+                Rate with precision —
+                3.7, 4.2, 4.8 or whatever
+                the film deserves.
+            </p>
+
+        </div>
 
 
-            <div class="feature">
+        <div class="feature">
 
-
-                <div class="feature-icon">
-
-                    ⭐
-
-                </div>
-
-
-
-                <h3>
-
-                    Ratings
-
-                </h3>
-
-
-
-                <p>
-
-                    Rate movies and series with
-                    decimal precision.
-
-                </p>
-
-
+            <div class="feature-icon">
+                💬
             </div>
 
+            <h3>
+                Public Discussions
+            </h3>
+
+            <p>
+                Share opinions and discuss
+                films with the whole
+                CineMates community.
+            </p>
+
+        </div>
 
 
-            <div class="feature">
+        <div class="feature">
 
-
-                <div class="feature-icon">
-
-                    💬
-
-                </div>
-
-
-
-                <h3>
-
-                    Discussions
-
-                </h3>
-
-
-
-                <p>
-
-                    Share opinions and discuss films
-                    publicly with your CineMates.
-
-                </p>
-
-
+            <div class="feature-icon">
+                📋
             </div>
 
+            <h3>
+                Recommendations
+            </h3>
 
+            <p>
+                Create lists of films and
+                series everyone should watch.
+            </p>
 
-            <div class="feature">
+        </div>
 
 
-                <div class="feature-icon">
+    </section>
 
-                    📋
 
-                </div>
+</main>
 
 
 
-                <h3>
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-                    Recommendations
+<footer>
 
-                </h3>
 
+    <div class="footer-name">
+        CineVault
+    </div>
 
 
-                <p>
+    <div>
+        ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
+    </div>
 
-                    Build your own movie and series
-                    recommendation lists.
 
-                </p>
+    <br>
 
 
-            </div>
-
-
-
-            <div class="feature">
-
-
-                <div class="feature-icon">
-
-                    🎞️
-
-                </div>
-
-
-
-                <h3>
-
-                    CineMates
-
-                </h3>
-
-
-
-                <p>
-
-                    Discover what your friends
-                    are watching.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="feature">
-
-
-                <div class="feature-icon">
-
-                    🌎
-
-                </div>
-
-
-
-                <h3>
-
-                    World Cinema
-
-                </h3>
-
-
-
-                <p>
-
-                    Explore movies and series from
-                    any language and any era.
-
-                </p>
-
-
-            </div>
-
-
-
-        </section>
-
-
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        CINEVAULT · ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
-
-        <br><br>
-
+    <div>
         LET'S DISCOVER & DISCUSS ART TOGETHER
+    </div>
 
-    </footer>
 
+</footer>
 
 
 </body>
