@@ -1,312 +1,1405 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Class Memories</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="CINEVAULT - ಸಿನಿಮಾ ಸಮ್ಮಿಲನ">
+
+    <title>CINEVAULT — ಸಿನಿಮಾ ಸಮ್ಮಿಲನ</title>
+
 
     <style>
+
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f0f14;
-            color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #09090d;
+
+            color:
+                #ffffff;
+
+            min-height:
+                100vh;
         }
 
-        header {
-            text-align: center;
-            padding: 55px 20px;
-            background: linear-gradient(135deg, #21164a, #101020);
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+
+            height:
+                70px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            padding:
+                0 5%;
+
+            background:
+                rgba(9, 9, 13, 0.95);
+
+            border-bottom:
+                1px solid #24242c;
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                100;
         }
 
-        header h1 {
-            font-size: 42px;
-            margin: 0 0 10px;
+
+        .logo {
+
+            font-size:
+                22px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                2px;
         }
 
-        header p {
-            color: #bdbdc8;
-            font-size: 16px;
+
+        .logo span {
+
+            display:
+                block;
+
+            font-size:
+                9px;
+
+            letter-spacing:
+                2px;
+
+            color:
+                #a5a5b0;
+
+            margin-top:
+                4px;
         }
 
-        .container {
-            width: min(800px, 92%);
-            margin: 30px auto;
+
+        .nav-links {
+
+            display:
+                flex;
+
+            gap:
+                25px;
+
+            list-style:
+                none;
         }
 
-        .counter {
-            text-align: center;
-            background: #191920;
-            padding: 25px;
-            border-radius: 18px;
-            margin-bottom: 25px;
+
+        .nav-links a {
+
+            color:
+                #bdbdc8;
+
+            text-decoration:
+                none;
+
+            font-size:
+                14px;
+
+            transition:
+                0.2s;
         }
 
-        .counter-number {
-            font-size: 42px;
-            font-weight: bold;
+
+        .nav-links a:hover {
+
+            color:
+                white;
         }
 
-        .form-card {
-            background: #191920;
-            padding: 30px;
-            border-radius: 20px;
+
+        .profile-btn {
+
+            width:
+                38px;
+
+            height:
+                38px;
+
+            border-radius:
+                50%;
+
+            background:
+                #24242c;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
         }
 
-        .form-card h2 {
-            text-align: center;
-            margin-top: 0;
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            min-height:
+                520px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                60px 20px;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    #29213e 0%,
+                    #111118 42%,
+                    #09090d 75%
+                );
         }
 
-        .form-card h3 {
-            margin-top: 30px;
+
+        .hero-content {
+
+            max-width:
+                800px;
         }
 
-        label {
-            display: block;
-            margin-top: 18px;
-            font-weight: bold;
+
+        .hero h1 {
+
+            font-size:
+                clamp(55px, 10vw, 105px);
+
+            letter-spacing:
+                8px;
+
+            font-weight:
+                900;
         }
 
-        input,
-        textarea {
-            width: 100%;
-            margin-top: 8px;
-            padding: 14px;
-            border: 1px solid #363640;
-            border-radius: 10px;
-            background: #101014;
-            color: white;
-            font-size: 15px;
-            outline: none;
+
+        .kannada {
+
+            font-size:
+                26px;
+
+            margin-top:
+                14px;
+
+            color:
+                #d6d6df;
+
+            font-weight:
+                500;
         }
 
-        input:focus,
-        textarea:focus {
-            border-color: #7c5cff;
+
+        .tagline {
+
+            margin-top:
+                12px;
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                4px;
+
+            color:
+                #9999a6;
         }
 
-        textarea {
-            min-height: 130px;
-            resize: vertical;
+
+        .hero-description {
+
+            max-width:
+                570px;
+
+            margin:
+                25px auto;
+
+            color:
+                #aaaab5;
+
+            line-height:
+                1.7;
+
+            font-size:
+                15px;
         }
 
-        .movie-box,
-        .song-box,
-        .series-box {
-            margin-top: 10px;
+
+        .hero-buttons {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                12px;
+
+            margin-top:
+                30px;
+
+            flex-wrap:
+                wrap;
         }
 
-        button {
-            border: none;
-            border-radius: 10px;
-            padding: 13px 18px;
-            margin-top: 12px;
-            background: #6c4cff;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
+
+        .button {
+
+            padding:
+                13px 23px;
+
+            border-radius:
+                9px;
+
+            border:
+                1px solid #34343e;
+
+            background:
+                #1a1a22;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            font-size:
+                14px;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.2s;
         }
 
-        button:hover {
-            opacity: 0.9;
+
+        .button:hover {
+
+            background:
+                #282833;
         }
 
-        .submit {
-            width: 100%;
-            margin-top: 30px;
-            padding: 17px;
-            font-size: 17px;
-            font-weight: bold;
+
+        .button.primary {
+
+            background:
+                #ffffff;
+
+            color:
+                #09090d;
+
+            border:
+                none;
+
+            font-weight:
+                700;
         }
 
-        .hint {
-            color: #999;
-            font-size: 13px;
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+
+            width:
+                min(1200px, 90%);
+
+            margin:
+                0 auto;
+
+            padding:
+                55px 0;
         }
+
+
+        .section-title {
+
+            font-size:
+                22px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            background:
+                #15151c;
+
+            border:
+                1px solid #2b2b35;
+
+            border-radius:
+                12px;
+
+            padding:
+                5px 15px;
+
+            margin-bottom:
+                55px;
+        }
+
+
+        .search-icon {
+
+            font-size:
+                20px;
+
+            margin-right:
+                10px;
+        }
+
+
+        .search-box input {
+
+            flex:
+                1;
+
+            background:
+                transparent;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            color:
+                white;
+
+            padding:
+                13px 5px;
+
+            font-size:
+                15px;
+        }
+
+
+
+        /* =========================
+           ACTIVITY
+        ========================= */
+
+        .activity {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap:
+                15px;
+        }
+
+
+        .activity-card {
+
+            background:
+                #15151c;
+
+            border:
+                1px solid #272731;
+
+            border-radius:
+                14px;
+
+            padding:
+                20px;
+
+            transition:
+                0.2s;
+        }
+
+
+        .activity-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #444450;
+        }
+
+
+        .activity-user {
+
+            font-size:
+                13px;
+
+            color:
+                #9999a6;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .activity-movie {
+
+            display:
+                flex;
+
+            gap:
+                15px;
+
+            align-items:
+                center;
+        }
+
+
+        .poster-placeholder {
+
+            width:
+                65px;
+
+            height:
+                95px;
+
+            border-radius:
+                7px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #363642,
+                    #17171e
+                );
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                25px;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .movie-name {
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .movie-year {
+
+            color:
+                #858591;
+
+            font-size:
+                13px;
+        }
+
+
+        .rating {
+
+            margin-top:
+                8px;
+
+            color:
+                #e5e5ea;
+
+            font-size:
+                14px;
+        }
+
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(180px, 1fr)
+                );
+
+            gap:
+                15px;
+
+            margin-top:
+                55px;
+        }
+
+
+        .feature {
+
+            padding:
+                24px;
+
+            background:
+                #15151c;
+
+            border:
+                1px solid #272731;
+
+            border-radius:
+                14px;
+
+            transition:
+                0.2s;
+        }
+
+
+        .feature:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                #444450;
+        }
+
+
+        .feature-icon {
+
+            font-size:
+                25px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .feature h3 {
+
+            font-size:
+                16px;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .feature p {
+
+            color:
+                #858591;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.5;
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            text-align: center;
-            padding: 30px;
-            color: #777;
+
+            text-align:
+                center;
+
+            padding:
+                50px 20px;
+
+            border-top:
+                1px solid #202028;
+
+            color:
+                #70707b;
+
+            font-size:
+                12px;
+
+            letter-spacing:
+                1px;
+
         }
 
-        @media (max-width: 600px) {
 
-            header h1 {
-                font-size: 31px;
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                padding:
+                    0 20px;
             }
 
-            .form-card {
-                padding: 20px;
+
+            .nav-links {
+
+                display:
+                    none;
             }
+
+
+            .hero {
+
+                min-height:
+                    470px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    52px;
+
+                letter-spacing:
+                    4px;
+            }
+
+
+            .kannada {
+
+                font-size:
+                    22px;
+            }
+
+
+            .tagline {
+
+                font-size:
+                    9px;
+
+                letter-spacing:
+                    2px;
+            }
+
+
+            .hero-description {
+
+                font-size:
+                    14px;
+            }
+
         }
+
     </style>
+
 </head>
+
+
 
 <body>
 
-<header>
-
-    <h1>🎓 Class Memories</h1>
-
-    <p>
-        Our movies. Our music. Our memories.
-        <br>
-        Something we'll remember forever ❤️
-    </p>
-
-</header>
 
 
-<div class="container">
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-    <div class="counter">
+    <nav class="navbar">
 
-        <div class="counter-number">
-            0 / 60
+
+        <div class="logo">
+
+            CINEVAULT
+
+            <span>
+                ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
+            </span>
+
         </div>
 
-        <div>
-            Classmates Joined
+
+
+        <ul class="nav-links">
+
+
+            <li>
+                <a href="#">
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    Explore
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    Diary
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    Ratings
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    Recommendations
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    CineMates
+                </a>
+            </li>
+
+
+        </ul>
+
+
+
+        <div class="profile-btn">
+
+            👤
+
         </div>
 
-    </div>
+
+    </nav>
 
 
-    <div class="form-card">
 
-        <h2>📝 Create Your Memory</h2>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-        <form>
-
-            <label>
-                Name *
-                <input
-                    type="text"
-                    placeholder="Enter your full name"
-                    required>
-            </label>
+    <section class="hero">
 
 
-            <label>
-                Roll Number *
-                <input
-                    type="text"
-                    placeholder="Enter your roll number"
-                    required>
-            </label>
+        <div class="hero-content">
 
 
-            <label>
-                ⭐ Favorite Actor *
-                <input
-                    type="text"
-                    placeholder="Your favorite actor"
-                    required>
-            </label>
+            <h1>
+
+                CINEVAULT
+
+            </h1>
 
 
-            <label>
-                ⭐ Favorite Actress *
-                <input
-                    type="text"
-                    placeholder="Your favorite actress"
-                    required>
-            </label>
 
+            <div class="kannada">
 
-            <h3>🎬 Your Favorite Movies</h3>
-
-            <p class="hint">
-                Minimum 5 movies • Maximum 20 movies
-            </p>
-
-            <div class="movie-box">
-
-                <input type="text" placeholder="Movie 1" required>
-
-                <input type="text" placeholder="Movie 2" required>
-
-                <input type="text" placeholder="Movie 3" required>
-
-                <input type="text" placeholder="Movie 4" required>
-
-                <input type="text" placeholder="Movie 5" required>
+                ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
 
             </div>
 
 
-            <h3>🍿 5 Movies Your Friend Must Watch</h3>
 
-            <input type="text" placeholder="Movie suggestion 1" required>
+            <div class="tagline">
 
-            <input type="text" placeholder="Movie suggestion 2" required>
+                LET'S DISCOVER & DISCUSS ART TOGETHER
 
-            <input type="text" placeholder="Movie suggestion 3" required>
-
-            <input type="text" placeholder="Movie suggestion 4" required>
-
-            <input type="text" placeholder="Movie suggestion 5" required>
+            </div>
 
 
-            <h3>📺 Top 3 Web Series</h3>
 
-            <p class="hint">
-                Optional
+            <p class="hero-description">
+
+                A private cinema space for our class.
+
+                Discover films, share what you've watched,
+                rate what you love, and discuss cinema
+                together.
+
             </p>
 
-            <input type="text" placeholder="Web series 1">
-
-            <input type="text" placeholder="Web series 2">
-
-            <input type="text" placeholder="Web series 3">
 
 
-            <h3>🎵 Top 5 All-Time Favorite Songs</h3>
-
-            <input type="text" placeholder="Song 1" required>
-
-            <input type="text" placeholder="Song 2" required>
-
-            <input type="text" placeholder="Song 3" required>
-
-            <input type="text" placeholder="Song 4" required>
-
-            <input type="text" placeholder="Song 5" required>
+            <div class="hero-buttons">
 
 
-            <h3>💌 Anything You Want To Tell Your Classmates</h3>
+                <a
+                    href="#explore"
+                    class="button primary">
 
-            <textarea
-                placeholder="Write something for your classmates..."></textarea>
+                    🔎 Explore Cinema
 
-
-            <button
-                type="submit"
-                class="submit">
-
-                🚀 Save My Memory
-
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
+                </a>
 
 
-<footer>
 
-    Made with ❤️ by our class
+                <a
+                    href="#activity"
+                    class="button">
 
-</footer>
+                    🎬 View Activity
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main id="explore">
+
+
+
+        <!-- SEARCH -->
+
+        <h2 class="section-title">
+
+            🔎 Explore Movies & Series
+
+        </h2>
+
+
+
+        <div class="search-box">
+
+
+            <span class="search-icon">
+
+                🔍
+
+            </span>
+
+
+
+            <input
+                type="text"
+                placeholder="Search any movie or series — any language, any era...">
+
+
+        </div>
+
+
+
+        <!-- =========================
+             ACTIVITY
+        ========================= -->
+
+        <section id="activity">
+
+
+            <h2 class="section-title">
+
+                🎬 What's Happening
+
+            </h2>
+
+
+
+            <div class="activity">
+
+
+
+                <!-- CARD 1 -->
+
+                <div class="activity-card">
+
+
+                    <div class="activity-user">
+
+                        Rahul watched
+
+                    </div>
+
+
+
+                    <div class="activity-movie">
+
+
+                        <div class="poster-placeholder">
+
+                            🎬
+
+                        </div>
+
+
+
+                        <div>
+
+
+                            <div class="movie-name">
+
+                                Interstellar
+
+                            </div>
+
+
+
+                            <div class="movie-year">
+
+                                2014
+
+                            </div>
+
+
+
+                            <div class="rating">
+
+                                ⭐ 4.8 / 5.0
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- CARD 2 -->
+
+                <div class="activity-card">
+
+
+                    <div class="activity-user">
+
+                        Ananya watched
+
+                    </div>
+
+
+
+                    <div class="activity-movie">
+
+
+                        <div class="poster-placeholder">
+
+                            🎬
+
+                        </div>
+
+
+
+                        <div>
+
+
+                            <div class="movie-name">
+
+                                KGF: Chapter 2
+
+                            </div>
+
+
+
+                            <div class="movie-year">
+
+                                2022
+
+                            </div>
+
+
+
+                            <div class="rating">
+
+                                ⭐ 4.6 / 5.0
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- CARD 3 -->
+
+                <div class="activity-card">
+
+
+                    <div class="activity-user">
+
+                        Vivek watched
+
+                    </div>
+
+
+
+                    <div class="activity-movie">
+
+
+                        <div class="poster-placeholder">
+
+                            📺
+
+                        </div>
+
+
+
+                        <div>
+
+
+                            <div class="movie-name">
+
+                                Breaking Bad
+
+                            </div>
+
+
+
+                            <div class="movie-year">
+
+                                Series
+
+                            </div>
+
+
+
+                            <div class="rating">
+
+                                ⭐ 4.9 / 5.0
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             FEATURES
+        ========================= -->
+
+        <section class="features">
+
+
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+
+                    📖
+
+                </div>
+
+
+
+                <h3>
+
+                    Your Diary
+
+                </h3>
+
+
+
+                <p>
+
+                    Keep your complete watch history,
+                    ratings and reviews.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+
+                    ⭐
+
+                </div>
+
+
+
+                <h3>
+
+                    Ratings
+
+                </h3>
+
+
+
+                <p>
+
+                    Rate movies and series with
+                    decimal precision.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+
+                    💬
+
+                </div>
+
+
+
+                <h3>
+
+                    Discussions
+
+                </h3>
+
+
+
+                <p>
+
+                    Share opinions and discuss films
+                    publicly with your CineMates.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+
+                    📋
+
+                </div>
+
+
+
+                <h3>
+
+                    Recommendations
+
+                </h3>
+
+
+
+                <p>
+
+                    Build your own movie and series
+                    recommendation lists.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+
+                    🎞️
+
+                </div>
+
+
+
+                <h3>
+
+                    CineMates
+
+                </h3>
+
+
+
+                <p>
+
+                    Discover what your friends
+                    are watching.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+
+                    🌎
+
+                </div>
+
+
+
+                <h3>
+
+                    World Cinema
+
+                </h3>
+
+
+
+                <p>
+
+                    Explore movies and series from
+                    any language and any era.
+
+                </p>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        CINEVAULT · ಸಿನಿಮಾ ಸಮ್ಮಿಲನ
+
+        <br><br>
+
+        LET'S DISCOVER & DISCUSS ART TOGETHER
+
+    </footer>
+
+
 
 </body>
+
 </html>
